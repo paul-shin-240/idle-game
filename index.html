@@ -1,0 +1,36 @@
+<div>Coins: <span id="coinsDisplay"></span></div>
+<div>Workers: <span id="workersDisplay"></span></div>
+<div>Worker Cost: <span id="workerCostDisplay"></span></div>
+<button onclick = "buyWorker()">Buy Worker</button>
+
+<script>
+    let coins = 10;
+    let workers = 1;
+    let workerCost = 10;
+
+gameLoop();
+setInterval(gameLoop, 100);
+
+function gameLoop() {
+    coins += (workers / 10);
+    display();
+}
+
+function display() {
+    coinsDisplay.innerText = coins.toFixed(1)
+    workersDisplay.innerText = workers
+    workerCostDisplay.innerText = workerCost
+}
+
+function buyWorker() {
+    if (coins >= workerCost) {
+        coins -= workerCost
+        workers ++;
+        workerCost += 25
+    }
+
+    display();
+
+}
+
+</script>
